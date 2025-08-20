@@ -1,0 +1,17 @@
+# This file contains machine-specific locations for the Android SDK.
+# Copy this file to local.properties and update the paths for your system.
+
+# Android SDK location (Windows)
+sdk.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk
+
+# Android SDK location (macOS)
+# sdk.dir=/Users/YourUsername/Library/Android/sdk
+
+# Android SDK location (Linux)
+# sdk.dir=/home/YourUsername/Android/Sdk
+
+# Optional: NDK location if you're using native code
+# ndk.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk\\ndk\\25.1.8937393
+
+# Optional: CMake location if you're using CMake
+# cmake.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1 

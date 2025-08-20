@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme for TV -->
+    <style name="Theme.HalalAndroidTVLauncher" parent="Theme.Leanback">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_dark_color</item>
+        <item name="colorAccent">@color/accent_color</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/background_color</item>
+        <item name="android:windowBackground">@color/background_color</item>
+        
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        
+        <!-- Status bar and navigation -->
+        <item name="android:statusBarColor">@color/background_color</item>
+        <item name="android:navigationBarColor">@color/background_color</item>
+        
+        <!-- Leanback specific -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+    
+    <!-- Theme for dialogs -->
+    <style name="Theme.HalalAndroidTVLauncher.Dialog" parent="Theme.HalalAndroidTVLauncher">
+        <item name="android:windowBackground">@color/surface_color</item>
+        <item name="android:windowMinWidthMajor">60%</item>
+        <item name="android:windowMinWidthMinor">80%</item>
+    </style>
+    
+    <!-- Theme for settings -->
+    <style name="Theme.HalalAndroidTVLauncher.Settings" parent="Theme.HalalAndroidTVLauncher">
+        <item name="android:windowBackground">@color/surface_color</item>
+    </style>
+</resources> 

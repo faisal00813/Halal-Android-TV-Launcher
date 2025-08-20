@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Display Settings">
+
+        <SeekBarPreference
+            android:key="grid_columns"
+            android:title="Grid Columns"
+            android:summary="Number of columns in app grid"
+            android:defaultValue="6"
+            android:max="10"
+            android:min="4" />
+
+        <SeekBarPreference
+            android:key="app_icon_size"
+            android:title="App Icon Size"
+            android:summary="Size of app icons in pixels"
+            android:defaultValue="200"
+            android:max="300"
+            android:min="100" />
+
+        <ListPreference
+            android:key="background_color"
+            android:title="Background Color"
+            android:summary="Choose launcher background color"
+            android:entries="@array/background_colors"
+            android:entryValues="@array/background_color_values"
+            android:defaultValue="dark" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="App Settings">
+
+        <SwitchPreference
+            android:key="show_system_apps"
+            android:title="Show System Apps"
+            android:summary="Display system applications in the launcher"
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:key="show_favorites_first"
+            android:title="Show Favorites First"
+            android:summary="Display favorite apps at the top"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="default_sort_order"
+            android:title="Default Sort Order"
+            android:summary="Default sorting method for apps"
+            android:entries="@array/sort_orders"
+            android:entryValues="@array/sort_order_values"
+            android:defaultValue="name" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Theme Settings">
+
+        <ListPreference
+            android:key="theme_mode"
+            android:title="Theme"
+            android:summary="Choose launcher theme"
+            android:entries="@array/themes"
+            android:entryValues="@array/theme_values"
+            android:defaultValue="auto" />
+
+        <SwitchPreference
+            android:key="use_dark_theme"
+            android:title="Force Dark Theme"
+            android:summary="Always use dark theme regardless of system setting"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Navigation Settings">
+
+        <SwitchPreference
+            android:key="enable_gestures"
+            android:title="Enable Gestures"
+            android:summary="Enable touch and remote control gestures"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="show_navigation_hints"
+            android:title="Show Navigation Hints"
+            android:summary="Display navigation hints for remote control"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen> 

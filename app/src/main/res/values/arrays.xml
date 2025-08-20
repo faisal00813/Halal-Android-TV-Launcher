@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background color options -->
+    <string-array name="background_colors">
+        <item>Dark</item>
+        <item>Light</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Purple</item>
+        <item>Custom</item>
+    </string-array>
+    
+    <string-array name="background_color_values">
+        <item>dark</item>
+        <item>light</item>
+        <item>blue</item>
+        <item>green</item>
+        <item>purple</item>
+        <item>custom</item>
+    </string-array>
+    
+    <!-- Sort order options -->
+    <string-array name="sort_orders">
+        <item>Name (A-Z)</item>
+        <item>Name (Z-A)</item>
+        <item>Install Time (Newest)</item>
+        <item>Install Time (Oldest)</item>
+        <item>Category</item>
+        <item>Size</item>
+    </string-array>
+    
+    <string-array name="sort_order_values">
+        <item>name_asc</item>
+        <item>name_desc</item>
+        <item>install_newest</item>
+        <item>install_oldest</item>
+        <item>category</item>
+        <item>size</item>
+    </string-array>
+    
+    <!-- Theme options -->
+    <string-array name="themes">
+        <item>Auto</item>
+        <item>Light</item>
+        <item>Dark</item>
+        <item>High Contrast</item>
+    </string-array>
+    
+    <string-array name="theme_values">
+        <item>auto</item>
+        <item>light</item>
+        <item>dark</item>
+        <item>high_contrast</item>
+    </string-array>
+    
+    <!-- Grid column options -->
+    <string-array name="grid_columns">
+        <item>4 Columns</item>
+        <item>5 Columns</item>
+        <item>6 Columns</item>
+        <item>7 Columns</item>
+        <item>8 Columns</item>
+        <item>9 Columns</item>
+        <item>10 Columns</item>
+    </string-array>
+    
+    <string-array name="grid_column_values">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+</resources> 
