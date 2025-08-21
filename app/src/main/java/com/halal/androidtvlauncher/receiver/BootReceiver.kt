@@ -7,11 +7,11 @@ import android.util.Log
 import com.halal.androidtvlauncher.MainActivity
 
 class BootReceiver : BroadcastReceiver() {
-    
+
     companion object {
         private const val TAG = "BootReceiver"
     }
-    
+
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
             Intent.ACTION_BOOT_COMPLETED,
@@ -22,7 +22,7 @@ class BootReceiver : BroadcastReceiver() {
             }
         }
     }
-    
+
     private fun handleBootCompleted(context: Context) {
         try {
             // Check if this app is the default launcher
@@ -36,20 +36,20 @@ class BootReceiver : BroadcastReceiver() {
             Log.e(TAG, "Error handling boot completed", e)
         }
     }
-    
+
     private fun isDefaultLauncher(context: Context): Boolean {
         return try {
-            val intent = Intent(Intent.ACTION_MAIN)
-            intent.addCategory(Intent.CATEGORY_HOME)
+            val intent = Intent(Intent.ACTION_MAIN).apply {
+                addCategory(Intent.CATEGORY_HOME)
+            }
             val resolveInfo = context.packageManager.resolveActivity(intent, 0)
-            
             resolveInfo?.activityInfo?.packageName == context.packageName
         } catch (e: Exception) {
             Log.e(TAG, "Error checking default launcher", e)
             false
         }
     }
-    
+
     private fun startLauncher(context: Context) {
         try {
             val intent = Intent(context, MainActivity::class.java).apply {
@@ -63,4 +63,4 @@ class BootReceiver : BroadcastReceiver() {
             Log.e(TAG, "Error starting launcher after boot", e)
         }
     }
-} 
+}

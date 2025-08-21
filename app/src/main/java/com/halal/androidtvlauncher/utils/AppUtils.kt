@@ -27,7 +27,7 @@ object AppUtils {
                     // Check if the app has a launch intent (can be launched)
                     val launchIntent = packageManager.getLaunchIntentForPackage(packageInfo.packageName)
                     if (launchIntent == null) {
-                        Log.d(TAG, "Skipping ${packageInfo.packageName} - no launch intent")
+                        // Log.d(TAG, "Skipping ${packageInfo.packageName} - no launch intent")
                         continue
                     }
                     
@@ -35,7 +35,7 @@ object AppUtils {
                     if (appInfo.flags and ApplicationInfo.FLAG_SYSTEM != 0) {
                         val packageName = packageInfo.packageName
                         if (isProblematicSystemApp(packageName)) {
-                            Log.d(TAG, "Skipping problematic system app: ${packageInfo.packageName}")
+                            // Log.d(TAG, "Skipping problematic system app: ${packageInfo.packageName}")
                             continue
                         }
                     }

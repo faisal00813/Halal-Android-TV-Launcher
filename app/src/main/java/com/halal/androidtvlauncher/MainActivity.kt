@@ -12,6 +12,9 @@ import android.view.Gravity
 import android.view.KeyEvent
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.FragmentActivity
 import androidx.leanback.app.BrowseSupportFragment
 import androidx.leanback.widget.*
@@ -29,13 +32,15 @@ class MainActivity : FragmentActivity() {
         private const val TAG = "MainActivity"
         private const val REQUEST_LAUNCHER_ROLE = 1001
     }
+    private lateinit var requestRoleLauncher: ActivityResultLauncher<Intent>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         try {
             setContentView(R.layout.activity_main)
-            
+
             // Ensure the layout is properly loaded before proceeding
             val mainLayout = findViewById<android.view.View>(R.id.main_browse_fragment)
             if (mainLayout == null) {
@@ -43,57 +48,93 @@ class MainActivity : FragmentActivity() {
                 showErrorScreen("Failed to load launcher layout")
                 return
             }
-            
+
+            // 🔹 Register launcher role request result handler
+            requestRoleLauncher = registerForActivityResult<Intent, ActivityResult>(
+                ActivityResultContracts.StartActivityForResult()
+            ) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    Toast.makeText(this, "✅ Launcher set as default!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "❌ Default launcher not set!", Toast.LENGTH_SHORT).show()
+                    showFallbackRoleMessage()
+                }
+            }
+
             loadInstalledApps()
             setupUI()
-            
+
             // Check launcher role and prompt if needed
             checkLauncherRole()
-            
+
         } catch (e: Exception) {
             Log.e(TAG, "Critical error in onCreate", e)
             showErrorScreen("Failed to initialize launcher: ${e.message}")
         }
     }
 
+    private fun isDefaultLauncher(): Boolean {
+        val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
+        val resolveInfo = packageManager.resolveActivity(intent, 0)
+        return resolveInfo?.activityInfo?.packageName == packageName
+    }
     private fun checkLauncherRole() {
+        // If already the default launcher, do nothing
+        Log.d(TAG, "===App is already thr")
+
+        if (isDefaultLauncher()) {
+            Log.d(TAG, "===App is already the default launcher")
+            return
+        }
+    
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             try {
-                val roleManager = getSystemService(Context.ROLE_SERVICE) as RoleManager
-                val isLauncher = roleManager.isRoleHeld(RoleManager.ROLE_HOME)
-                
-                if (!isLauncher) {
-                    Log.d(TAG, "App is not default launcher, showing role request")
-                    // Show role request after a longer delay to ensure UI is fully loaded
-                    findViewById<android.view.View>(android.R.id.content).postDelayed({
-                        try {
-                            showLauncherRoleRequest()
-                        } catch (e: Exception) {
-                            Log.e(TAG, "Error showing launcher role request", e)
-                        }
-                    }, 5000) // Increased delay to 5 seconds
-                } else {
-                    Log.d(TAG, "App is already default launcher")
+                Log.d(TAG, "===App is a,")
+
+                val roleManager = getSystemService(RoleManager::class.java)
+                if (roleManager != null && !roleManager.isRoleHeld(RoleManager.ROLE_HOME)) {
+                    Log.d(TAG, "===App is a,aaa")
+
+                    val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_HOME)
+                    requestRoleLauncher.launch(intent)
+                }
+                else{
+                    Log.d(TAG, "===Arole"+roleManager.isRoleHeld(RoleManager.ROLE_HOME))
+
                 }
             } catch (e: Exception) {
-                Log.w(TAG, "Error checking launcher role", e)
+                Log.e(TAG, "Error requesting launcher role", e)
+                showFallbackRoleMessage()
             }
-        }
-    }
-    
-    private fun showLauncherRoleRequest() {
-        try {
-            // Check if the activity is still valid before starting
-            if (!isFinishing && !isDestroyed) {
-                val intent = Intent(this, LauncherRoleRequestActivity::class.java)
-                startActivity(intent)
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error showing launcher role request", e)
-            // Fallback: show a simple toast message
+        } else {
+            // < Android 10: no RoleManager—guide user to Settings
             showFallbackRoleMessage()
         }
     }
+    
+    
+    
+    private fun showLauncherRoleRequest() {
+        try {
+            if (!isFinishing && !isDestroyed && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val roleManager = getSystemService(RoleManager::class.java)
+                if (roleManager != null && !roleManager.isRoleHeld(RoleManager.ROLE_HOME)) {
+                    val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_HOME)
+                    requestRoleLauncher.launch(intent)
+                } else {
+                    Log.d(TAG, "App is already default launcher ✅")
+                }
+            } else {
+                showFallbackRoleMessage()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error showing launcher role request", e)
+            showFallbackRoleMessage()
+        }
+    }
+    
+    
+    
     
     private fun showFallbackRoleMessage() {
         try {
