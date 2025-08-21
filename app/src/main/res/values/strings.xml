@@ -19,4 +19,50 @@
     <string name="dark_theme">Dark Theme</string>
     <string name="light_theme">Light Theme</string>
     <string name="auto_theme">Auto Theme</string>
+    
+    <!-- Error messages -->
+    <string name="error_title">Something went wrong</string>
+    <string name="error_message">The launcher encountered an error</string>
+    <string name="retry">Retry</string>
+    <string name="critical_error">Critical Error</string>
+    <string name="failed_to_initialize">Failed to initialize launcher</string>
+    <string name="failed_to_setup">Failed to setup launcher interface</string>
+    <string name="failed_to_load_apps">Failed to load applications</string>
+    <string name="failed_to_launch_app">Failed to launch application</string>
+    
+    <!-- Navigation -->
+    <string name="menu">Menu</string>
+    <string name="back">Back</string>
+    <string name="home">Home</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Loading and UI -->
+    <string name="loading_launcher">Loading Launcher...</string>
+    <string name="app_list_refreshed">App list refreshed: %d apps</string>
+    <string name="system_apps_on">System apps: ON</string>
+    <string name="system_apps_off">System apps: OFF</string>
+    <string name="error_refreshing_apps">Error refreshing app list</string>
+    <string name="error_toggling_system_apps">Error toggling system app visibility</string>
+    <string name="keyboard_shortcuts">Keyboard Shortcuts</string>
+    <string name="press_any_key_to_close">Press any key to close</string>
+    <string name="error_showing_help">Error showing help</string>
+    
+    <!-- Launcher Role Request -->
+    <string name="set_as_default_launcher">Set as Default Launcher</string>
+    <string name="default_launcher_explanation">Make Halal Android TV Launcher your default home screen. This will allow you to customize your TV experience with a beautiful, organized interface.</string>
+    <string name="request_default_launcher">Set as Default</string>
+    <string name="manual_setup">Manual Setup</string>
+    <string name="skip_for_now">Skip for Now</string>
+    <string name="launcher_already_set">Already Set as Default</string>
+    <string name="launcher_already_set_message">Halal Android TV Launcher is already your default launcher. Enjoy your customized TV experience!</string>
+    <string name="launcher_role_granted_title">Success!</string>
+    <string name="launcher_role_granted_message">Halal Android TV Launcher is now your default launcher. You can customize it further in the settings.</string>
+    <string name="manual_setup_required">Manual Setup Required</string>
+    <string name="manual_setup_explanation">Please go to Settings > Apps > Default Apps > Home app and select Halal Android TV Launcher.</string>
+    <string name="launcher_role_not_available">Launcher role not available</string>
+    <string name="error_requesting_role">Error requesting launcher role</string>
+    <string name="error_opening_settings">Error opening settings</string>
+    <string name="launcher_role_granted">Launcher role granted successfully!</string>
+    <string name="launcher_role_denied">Launcher role request denied</string>
 </resources> 

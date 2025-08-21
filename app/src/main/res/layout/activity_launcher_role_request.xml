@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background_color"
+    android:padding="48dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <!-- App Icon -->
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/app_name" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/role_request_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/set_as_default_launcher"
+        android:textSize="28sp"
+        android:textColor="@color/text_primary"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"
+        android:focusable="true" />
+
+    <!-- Message -->
+    <TextView
+        android:id="@+id/role_request_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/default_launcher_explanation"
+        android:textSize="18sp"
+        android:textColor="@color/text_secondary"
+        android:gravity="center"
+        android:layout_marginBottom="48dp"
+        android:maxWidth="600dp" />
+
+    <!-- Button Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Request Role Button -->
+        <Button
+            android:id="@+id/request_role_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/request_default_launcher"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/button_background"
+            android:padding="20dp"
+            android:minWidth="200dp"
+            android:layout_marginBottom="16dp"
+            android:focusable="true"
+            android:nextFocusDown="@+id/manual_setup_button" />
+
+        <!-- Manual Setup Button -->
+        <Button
+            android:id="@+id/manual_setup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manual_setup"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:background="@drawable/button_background_secondary"
+            android:padding="16dp"
+            android:minWidth="180dp"
+            android:layout_marginBottom="16dp"
+            android:focusable="true"
+            android:nextFocusUp="@+id/request_role_button"
+            android:nextFocusDown="@+id/skip_button" />
+
+        <!-- Skip Button -->
+        <Button
+            android:id="@+id/skip_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skip_for_now"
+            android:textSize="14sp"
+            android:textColor="@color/text_disabled"
+            android:background="@drawable/button_background_transparent"
+            android:padding="12dp"
+            android:minWidth="120dp"
+            android:focusable="true"
+            android:nextFocusUp="@+id/manual_setup_button" />
+
+    </LinearLayout>
+
+</LinearLayout> 

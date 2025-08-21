@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme for TV -->
-    <style name="Theme.HalalAndroidTVLauncher" parent="Theme.Leanback">
+    <style name="Theme.HalalAndroidTVLauncher" parent="Theme.AppCompat.NoActionBar">
         <!-- Primary brand color -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
@@ -20,20 +20,37 @@
         <item name="android:statusBarColor">@color/background_color</item>
         <item name="android:navigationBarColor">@color/background_color</item>
         
-        <!-- Leanback specific -->
+        <!-- TV-specific settings -->
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">false</item>
+        
+        <!-- AppCompat compatibility -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
     
     <!-- Theme for dialogs -->
-    <style name="Theme.HalalAndroidTVLauncher.Dialog" parent="Theme.HalalAndroidTVLauncher">
+    <style name="Theme.HalalAndroidTVLauncher.Dialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@color/surface_color</item>
         <item name="android:windowMinWidthMajor">60%</item>
         <item name="android:windowMinWidthMinor">80%</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorAccent">@color/accent_color</item>
     </style>
     
     <!-- Theme for settings -->
-    <style name="Theme.HalalAndroidTVLauncher.Settings" parent="Theme.HalalAndroidTVLauncher">
+    <style name="Theme.HalalAndroidTVLauncher.Settings" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/surface_color</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorAccent">@color/accent_color</item>
+    </style>
+    
+    <!-- Theme for leanback activities (MainActivity) -->
+    <style name="Theme.HalalAndroidTVLauncher.Leanback" parent="Theme.Leanback">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_dark_color</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="android:colorBackground">@color/background_color</item>
+        <item name="android:windowBackground">@color/background_color</item>
     </style>
 </resources> 
