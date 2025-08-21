@@ -85,8 +85,19 @@ class MainActivity : FragmentActivity() {
         try {
             // Check if the activity is still valid before starting
             if (!isFinishing && !isDestroyed) {
-                val intent = Intent(this, LauncherRoleRequestActivity::class.java)
-                startActivity(intent)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    val roleManager = getSystemService(Context.ROLE_SERVICE) as RoleManager
+                    if (roleManager.isRoleAvailable(RoleManager.ROLE_HOME)) {
+                        val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_HOME)
+                        startActivityForResult(intent, REQUEST_LAUNCHER_ROLE)
+                    } else {
+                        Log.w(TAG, "Launcher role not available, showing manual setup message")
+                        showFallbackRoleMessage()
+                    }
+                } else {
+                    // For older Android versions, show manual setup message
+                    showFallbackRoleMessage()
+                }
             }
         } catch (e: Exception) {
             Log.e(TAG, "Error showing launcher role request", e)
@@ -268,6 +279,20 @@ class MainActivity : FragmentActivity() {
             Log.e(TAG, "Failed to show error screen", e)
             // Last resort - show system error
             Toast.makeText(this, "Critical error: $message", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        
+        if (requestCode == REQUEST_LAUNCHER_ROLE) {
+            if (resultCode == RESULT_OK) {
+                Log.d(TAG, "Launcher role granted successfully")
+                Toast.makeText(this, "Halal Android TV Launcher is now your default launcher!", Toast.LENGTH_LONG).show()
+            } else {
+                Log.d(TAG, "Launcher role request denied or cancelled")
+                Toast.makeText(this, "To set as default launcher, go to Settings > Apps > Default apps > Home app", Toast.LENGTH_LONG).show()
+            }
         }
     }
 

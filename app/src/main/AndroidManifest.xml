@@ -109,12 +109,7 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.HalalAndroidTVLauncher.Settings" />
 
-        <!-- Launcher Role Request Activity -->
-        <activity
-            android:name=".LauncherRoleRequestActivity"
-            android:exported="false"
-            android:theme="@style/Theme.HalalAndroidTVLauncher.Dialog"
-            android:screenOrientation="landscape" />
+
 
         <!-- Boot Receiver for launcher persistence -->
         <receiver
